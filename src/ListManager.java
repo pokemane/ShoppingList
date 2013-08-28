@@ -139,23 +139,23 @@ public class ListManager {
 	//returns the index of the item searched by the name of the list object
 	public static int searchInvItemByName(String ItemName){
 		int itemIndex = -1;
-		if (!InventoryList.isEmpty()){
-			for (int indexList = 0; indexList < InventoryList.size(); indexList++){
-				InventoryItem cInvItem = InventoryList.get(indexList);
-				if (cInvItem.getName().equals(ItemName)){
-					itemIndex = indexList;
-				}
-				else{
-					itemIndex = -1;
-				}
+	if (!InventoryList.isEmpty()){
+		for (int indexList = 0; indexList < InventoryList.size(); indexList++){
+			InventoryItem cInvItem = InventoryList.get(indexList);
+			if (cInvItem.getName().equals(ItemName)){
+				itemIndex = indexList;
+			}
+			else{
+				itemIndex = -1;
 			}
 		}
-		else{
-			System.out.println("List empty.");
-			itemIndex = -1;
-		}
-		return itemIndex;
 	}
+	else{
+		System.out.println("List empty.");
+		itemIndex = -1;
+	}
+	return itemIndex;
+}
 
 	/**
 	 * ^^^^^^Inventory List Managers^^^^^^^^
