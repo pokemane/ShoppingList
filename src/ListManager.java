@@ -51,8 +51,17 @@ public class ListManager {
 		GroceryList.add(newItem);
 	}
 
+	public static void removeGroceryItem(String ItemName){
+		if (searchGroceryItemByName(ItemName) != -1){
+			GroceryList.remove(searchGroceryItemByName(ItemName));
+		}
+		else{
+			System.out.println("Aborting item removal.");
+		}
+	}
+
 	//returns the index of the item searched by the name of the list object
-	public static int searchItemByName(String ItemName){
+	public static int searchGroceryItemByName(String ItemName){
 		int itemIndex = -1;
 		if (!GroceryList.isEmpty()){
 			for (int indexList = 0; indexList < GroceryList.size(); indexList++){
@@ -72,14 +81,11 @@ public class ListManager {
 		return itemIndex;
 	}
 
-	public static void removeGroceryItem(String ItemName){
-		if (searchItemByName(ItemName) != -1){
-			GroceryList.remove(searchItemByName(ItemName));
-		}
-		else{
-			System.out.println("Aborting item removal.");
-		}
-	}
+	/**
+	 * ^^^^Grocery List Managers^^^^^
+	 */
+
+
 
 	/**
 	 *
@@ -116,7 +122,43 @@ public class ListManager {
 		System.out.println(" - " + ItemName + " - Bought On: " + ItemDate + " - Purchase Price:" + ItemPrice + " - Quantity:" + ItemQuant);
 	}
 
+	public static void addInventoryItem(String ItemName, int ItemDate, double ItemPrice, int ItemQuant){
+		InventoryItem newItem = new InventoryItem(ItemName, ItemDate, ItemPrice, ItemQuant);
+		InventoryList.add(newItem);
+	}
 
+	public static void removeInventoryItem(String ItemName){
+		if (searchInvItemByName(ItemName) != -1){
+			InventoryList.remove(searchGroceryItemByName(ItemName));
+		}
+		else{
+			System.out.println("Aborting item removal.");
+		}
+	}
 
+	//returns the index of the item searched by the name of the list object
+	public static int searchInvItemByName(String ItemName){
+		int itemIndex = -1;
+		if (!InventoryList.isEmpty()){
+			for (int indexList = 0; indexList < InventoryList.size(); indexList++){
+				InventoryItem cInvItem = InventoryList.get(indexList);
+				if (cInvItem.getName().equals(ItemName)){
+					itemIndex = indexList;
+				}
+				else{
+					itemIndex = -1;
+				}
+			}
+		}
+		else{
+			System.out.println("List empty.");
+			itemIndex = -1;
+		}
+		return itemIndex;
+	}
+
+	/**
+	 * ^^^^^^Inventory List Managers^^^^^^^^
+	 */
 
 }
